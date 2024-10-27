@@ -4,10 +4,11 @@ import React from "react";
 
 const theme = {
   colors: {
-    primary: "#B9E5E8",
-    secondary: "#7AB2D3",
+    primary: "#E8390D",
+    secondary: "rgb(1, 51, 68)",
     accent: "#4A628A",
     background: "#DFF2EB",
+    text: "#333333",
   },
 };
 
