@@ -1,0 +1,17 @@
+{  
+  "extends": ["stylelint-config-standard"],  
+  "customSyntax": "postcss-styled-syntax",  
+  "rules": {  
+    "declaration-empty-line-before": [  
+      "always",  
+      {  
+        "ignore": [  
+          "first-nested",  
+          "after-comment",  
+          "after-declaration",  
+          "inside-single-line-block"  
+        ]  
+      }  
+    ]
+  }
+}
