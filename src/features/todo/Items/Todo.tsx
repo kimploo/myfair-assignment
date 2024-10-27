@@ -1,5 +1,4 @@
-import { useDraggable, useDroppable } from "@dnd-kit/core";
-import { css } from "@emotion/react";
+import { useDraggable } from "@dnd-kit/core";
 import styled from "@emotion/styled";
 
 import { Todo as ITodo } from "../todo.type";
@@ -23,7 +22,7 @@ const Conatiner = styled.li<{ isOver?: boolean; transform: Transform | null }>`
 
 export default function Todo({ todo }: Props) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: "draggable" + todo.id,
+    id: todo.id,
   });
 
   return (
