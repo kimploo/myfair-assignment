@@ -15,7 +15,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const LayoutRecoil = ({ children }: Props) => {
+export default function LayoutTheme({ children }: Props) {
   return (
     <>
       <Global
@@ -49,6 +49,4 @@ const LayoutRecoil = ({ children }: Props) => {
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </>
   );
-};
-
-export default LayoutRecoil;
+}
