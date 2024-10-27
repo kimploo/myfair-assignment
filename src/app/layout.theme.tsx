@@ -45,6 +45,10 @@ export default function LayoutTheme({ children }: Props) {
             margin: 0;
             height: 100%;
           }
+
+          li {
+            list-style: none;
+          }
         `}
       />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

@@ -3,8 +3,11 @@
 import styled from "@emotion/styled";
 import React from "react";
 
+import TodoList from "../../features/todo/TodoList";
+
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -19,6 +22,7 @@ const TodoUserListPage = ({}: Props) => {
   return (
     <Container>
       <Heading>TODO Application</Heading>
+      <TodoList></TodoList>
     </Container>
   );
 };
