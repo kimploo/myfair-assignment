@@ -21,7 +21,7 @@ export default function TodoStatusArea({ children, status }: Props) {
       <StatusWrapper>
         <Status status={status}>{status}</Status>
       </StatusWrapper>
-      <TodoWrapper>{children}</TodoWrapper>
+      <TodosWrapper>{children}</TodosWrapper>
     </Container>
   );
 }
@@ -29,8 +29,6 @@ export default function TodoStatusArea({ children, status }: Props) {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-
-  border: 1px solid rgb(0, 0, 0, 0.5);
 `;
 
 const StatusWrapper = styled.div`
@@ -40,17 +38,27 @@ const StatusWrapper = styled.div`
 `;
 
 const Status = styled.div<{ status: TodoStatus }>`
-  padding: 0.1rem 0.5rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 1rem;
-  background-color: ${({ status }) => {
+  background-color: ${({ status, theme }) => {
     return status === "할 일"
-      ? "rgb(227, 226, 224)"
+      ? theme.colors.todo
       : status === "진행 중"
-        ? "rgb(211, 229, 239)"
-        : "rgb(219, 237, 219)";
+        ? theme.colors.inProgress
+        : theme.colors.done;
   }};
 `;
 
-const TodoWrapper = styled.ul`
+const TodosWrapper = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+  width: 100%;
+  height: 100%;
+  margin-top: 0.1rem;
   padding: 0.5rem;
 `;

@@ -13,7 +13,10 @@ const Container = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 700;
+
+  padding: 1rem 0;
 `;
 
 interface Props {}
@@ -21,7 +24,7 @@ interface Props {}
 const TodoUserListPage = ({}: Props) => {
   return (
     <Container>
-      <Heading>TODO Application</Heading>
+      <Heading>TODO App</Heading>
       <TodoList></TodoList>
     </Container>
   );

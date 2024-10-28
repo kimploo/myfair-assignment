@@ -3,12 +3,18 @@ import { css, Global, ThemeProvider } from "@emotion/react";
 import React from "react";
 
 const theme = {
+  breakpoint: {
+    mobile: "640px",
+  },
   colors: {
     primary: "#E8390D",
     secondary: "rgb(1, 51, 68)",
     accent: "#4A628A",
     background: "#DFF2EB",
     text: "#333333",
+    todo: "rgb(227, 226, 224)",
+    inProgress: "rgb(211, 229, 239)",
+    done: "rgb(219, 237, 219)",
   },
 };
 
@@ -238,7 +244,27 @@ export default function LayoutTheme({ children }: Props) {
           }
 
           li {
+            margin: 0;
+            padding: 0;
             list-style: none;
+          }
+
+          ul {
+            margin: 0;
+            padding: 0;
+          }
+
+          button {
+            all: unset; /* Remove all default styling */
+            display: inline-block; /* Ensures button behaves like an inline element */
+            box-sizing: border-box; /* Allows padding and border to fit inside width/height */
+            padding: 0; /* Removes default padding */
+            border: none; /* Removes default border */
+            background: none; /* Removes default background */
+            color: inherit; /* Inherit text color from parent */
+            font: inherit; /* Inherit font styles */
+            text-align: center; /* Centers text */
+            cursor: pointer; /* Sets the pointer on hover */
           }
         `}
       />

@@ -1,24 +1,17 @@
 import { useDraggable } from "@dnd-kit/core";
 import styled from "@emotion/styled";
 
+import { TodoBase } from "../asset/TodoBase";
 import { Todo as ITodo } from "../todo.type";
 
 interface Props {
   todo: ITodo;
 }
 
-type Transform = {
-  x: number;
-  y: number;
-  scaleX: number;
-  scaleY: number;
-};
+const Conatiner = TodoBase;
 
-const Conatiner = styled.li<{ isOver?: boolean; transform: Transform | null }>`
-  opacity: ${(props) => (props.transform ? 0.3 : 1)};
-  transform: ${({ transform }) =>
-    transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : ""};
-  color: ${(props) => props.theme.colors.text};
+const DueDate = styled.span`
+  font-size: 0.8rem;
 `;
 
 export default function Todo({ todo }: Props) {
@@ -30,10 +23,12 @@ export default function Todo({ todo }: Props) {
     <Conatiner
       ref={setNodeRef}
       transform={transform}
+      status={todo.status}
       {...listeners}
       {...attributes}
     >
       {todo.description}
+      <DueDate>{todo.dueDate}</DueDate>
     </Conatiner>
   );
 }
