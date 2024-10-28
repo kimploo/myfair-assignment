@@ -22,7 +22,10 @@ yarn dev
 
 - 레이아웃
 
+- DnD 초기 설정
+
 - TODO 조회
+  - 마감일에 따라 표시 UI 변경
 
 - TODO 생성
 

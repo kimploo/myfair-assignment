@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 
+import TodoStatusArea from "./components/TodoStatusArea";
 import CreateTodoButton from "./CreateTodoButton";
-import Todo from "./Items/Todo";
-import TodoStatusArea from "./Items/TodoStatusArea";
+import Todo from "./Todo";
 import { todoState } from "./todo.atom";
 import { Todo as ITodo, TodoStatus } from "./todo.type";
 

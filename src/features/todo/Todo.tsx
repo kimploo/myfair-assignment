@@ -1,18 +1,12 @@
 import { useDraggable } from "@dnd-kit/core";
 import styled from "@emotion/styled";
 
-import { TodoBase } from "../asset/TodoBase";
-import { Todo as ITodo } from "../todo.type";
+import { TodoBase } from "./asset/TodoBase";
+import { Todo as ITodo } from "./todo.type";
 
 interface Props {
   todo: ITodo;
 }
-
-const Conatiner = TodoBase;
-
-const DueDate = styled.span`
-  font-size: 0.8rem;
-`;
 
 export default function Todo({ todo }: Props) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -32,3 +26,9 @@ export default function Todo({ todo }: Props) {
     </Conatiner>
   );
 }
+
+const Conatiner = TodoBase;
+
+const DueDate = styled.span`
+  font-size: 0.8rem;
+`;
