@@ -18,6 +18,7 @@ const Conatiner = styled.li<{ isOver?: boolean; transform: Transform | null }>`
   opacity: ${(props) => (props.transform ? 0.3 : 1)};
   transform: ${({ transform }) =>
     transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : ""};
+  color: ${(props) => props.theme.colors.text};
 `;
 
 export default function Todo({ todo }: Props) {
@@ -32,7 +33,6 @@ export default function Todo({ todo }: Props) {
       {...listeners}
       {...attributes}
     >
-      {todo.status}
       {todo.description}
     </Conatiner>
   );

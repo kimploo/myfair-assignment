@@ -1,6 +1,5 @@
 "use client";
 import { css, Global, ThemeProvider } from "@emotion/react";
-// import "modern-normalize";
 import React from "react";
 
 const theme = {
