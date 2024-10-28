@@ -11,7 +11,7 @@ interface Props {
   todo: Todo;
 }
 
-export default function UpdateTodoInput({ todo }: Props) {
+export default function UpdateTodo({ todo }: Props) {
   const [desc, setDesc] = useState(todo.description);
   const [dueDate, setDueDate] = useState(todo.dueDate);
   const setTodos = useSetRecoilState(todoState);
@@ -47,7 +47,7 @@ export default function UpdateTodoInput({ todo }: Props) {
           onChange={(e) => setDueDate(e.target.value)}
         ></Input>
         <SubmitButton status={todo.status} type="submit">
-          TODO 등록
+          TODO 등록 / 수정
         </SubmitButton>
       </Form>
     </TodoBase>

@@ -23,7 +23,7 @@ export const setStatus = (
 export const setCanEdit = (
   id: string,
   setter: SetterOrUpdater<Todo[]>,
-  status: TodoStatus,
+  canEdit: boolean,
 ) => {
   setter((todos) => {
     const idx = todos.findIndex((todo) => todo.id === id);
@@ -31,7 +31,7 @@ export const setCanEdit = (
       ...todos.slice(0, idx),
       {
         ...todos[idx],
-        status,
+        canEdit,
       },
       ...todos.slice(idx + 1),
     ];
@@ -42,5 +42,12 @@ export const updateTodo = (newTodo: Todo, setter: SetterOrUpdater<Todo[]>) => {
   setter((todos) => {
     const idx = todos.findIndex((todo) => todo.id === newTodo.id);
     return [...todos.slice(0, idx), newTodo, ...todos.slice(idx + 1)];
+  });
+};
+
+export const deleteTodo = (id: string, setter: SetterOrUpdater<Todo[]>) => {
+  setter((todos) => {
+    const idx = todos.findIndex((todo) => todo.id === id);
+    return [...todos.slice(0, idx), ...todos.slice(idx + 1)];
   });
 };
