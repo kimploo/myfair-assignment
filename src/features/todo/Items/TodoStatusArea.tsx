@@ -51,6 +51,6 @@ const Status = styled.div<{ status: TodoStatus }>`
   }};
 `;
 
-const TodoWrapper = styled.div`
+const TodoWrapper = styled.ul`
   padding: 0.5rem;
 `;

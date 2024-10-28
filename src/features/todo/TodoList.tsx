@@ -1,14 +1,14 @@
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 
 import Todo from "./Items/Todo";
 import TodoStatusArea from "./Items/TodoStatusArea";
 import { todoState } from "./todo.atom";
 import { TodoStatus } from "./todo.type";
 
-const TodoContainer = styled.ul`
+const TodoContainer = styled.div`
   display: flex;
   border: 1px solid rgb(0, 0, 0, 0.1);
   border-radius: 0.5rem;
