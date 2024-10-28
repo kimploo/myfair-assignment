@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { FormEventHandler, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import { TodoBase } from "./asset/TodoBase";
 import { todoState } from "./state/todo.atom";
@@ -14,7 +14,7 @@ interface Props {
 export default function UpdateTodoInput({ todo }: Props) {
   const [desc, setDesc] = useState(todo.description);
   const [dueDate, setDueDate] = useState(todo.dueDate);
-  const [todos, setTodos] = useRecoilState(todoState);
+  const setTodos = useSetRecoilState(todoState);
 
   const todoDescId = "todo-description-" + todo.id;
   const todoDateId = "todo-date-" + todo.id;
@@ -29,7 +29,7 @@ export default function UpdateTodoInput({ todo }: Props) {
       canEdit: false,
     };
 
-    updateTodo(todos, newTodo, setTodos);
+    updateTodo(newTodo, setTodos);
   };
 
   return (
