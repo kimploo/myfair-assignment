@@ -4,7 +4,7 @@ import { useDroppable } from "@dnd-kit/core";
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
 
-import { TodoStatus } from "../todo.type";
+import { TodoStatus } from "../types/todo.type";
 
 interface Props {
   status: TodoStatus;

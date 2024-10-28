@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 
-import { Todo } from "../features/todo/todo.type";
+import { Todo } from "../features/todo/types/todo.type";
 
 export const dummyTodos: Todo[] = [
   {

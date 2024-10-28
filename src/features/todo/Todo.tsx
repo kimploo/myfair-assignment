@@ -2,7 +2,8 @@ import { useDraggable } from "@dnd-kit/core";
 import styled from "@emotion/styled";
 
 import { TodoBase } from "./asset/TodoBase";
-import { Todo as ITodo } from "./todo.type";
+import { Todo as ITodo } from "./types/todo.type";
+import UpdateTodoInput from "./UpdateTodoInput";
 
 interface Props {
   todo: ITodo;
@@ -13,7 +14,9 @@ export default function Todo({ todo }: Props) {
     id: todo.id,
   });
 
-  return (
+  return todo.canEdit ? (
+    <UpdateTodoInput todo={todo} />
+  ) : (
     <Conatiner
       ref={setNodeRef}
       transform={transform}
@@ -22,7 +25,7 @@ export default function Todo({ todo }: Props) {
       {...attributes}
     >
       {todo.description}
-      <DueDate>{todo.dueDate}</DueDate>
+      {<DueDate>{todo.dueDate}</DueDate>}
     </Conatiner>
   );
 }

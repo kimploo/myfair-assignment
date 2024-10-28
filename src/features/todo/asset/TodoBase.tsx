@@ -2,7 +2,7 @@
 
 import styled from "@emotion/styled";
 
-import { TodoStatus } from "../todo.type";
+import { TodoStatus } from "../types/todo.type";
 
 type Transform = {
   x: number;

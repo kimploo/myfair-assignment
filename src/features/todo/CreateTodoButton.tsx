@@ -4,8 +4,8 @@ import { nanoid } from "nanoid";
 import { useSetRecoilState } from "recoil";
 
 import { TodoBase } from "./asset/TodoBase";
-import { todoState } from "./todo.atom";
-import { TodoStatus } from "./todo.type";
+import { todoState } from "./state/todo.atom";
+import { TodoStatus } from "./types/todo.type";
 
 const Container = styled.div`
   display: flex;
