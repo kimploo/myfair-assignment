@@ -22,7 +22,7 @@ interface Props {
   status: TodoStatus;
 }
 
-export default function CreateTodoButton({ status }: Props) {
+export default function CreateTodo({ status }: Props) {
   const setTodo = useSetRecoilState(todoState);
 
   return (
