@@ -27,6 +27,7 @@ export default function Todo({ todo }: Props) {
       ref={setNodeRef}
       transform={transform}
       status={todo.status}
+      data-testid={"todo-" + todo.id}
       {...listeners}
       {...attributes}
     >
@@ -35,10 +36,16 @@ export default function Todo({ todo }: Props) {
         <DueDate>{todo.dueDate}</DueDate>
       </MainWrapper>
       <ButtonWrapper onPointerDown={(e) => e.stopPropagation()}>
-        <button onClick={() => setCanEdit(todo.id, setTodos, true)}>
+        <button
+          data-testid={"edit-button-" + todo.id}
+          onClick={() => setCanEdit(todo.id, setTodos, true)}
+        >
           <Edit />
         </button>
-        <button onClick={() => deleteTodo(todo.id, setTodos)}>
+        <button
+          data-testid={"delete-button-" + todo.id}
+          onClick={() => deleteTodo(todo.id, setTodos)}
+        >
           <X />
         </button>
       </ButtonWrapper>

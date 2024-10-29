@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useRecoilState } from "recoil";
 
 import TodoStatusArea from "./components/TodoStatusArea";
-import CreateTodoButton from "./CreateTodoButton";
+import CreateTodo from "./CreateTodo";
 import { todoState } from "./state/todo.atom";
 import { setStatus } from "./state/todo.function";
 import Todo from "./Todo";
@@ -42,7 +42,7 @@ export default function TodoList() {
               .map((e) => (
                 <Todo key={e.id} todo={e}></Todo>
               ))}
-            <CreateTodoButton status={status} />
+            <CreateTodo status={status} />
           </TodoStatusArea>
         ))}
       </TodoContainer>

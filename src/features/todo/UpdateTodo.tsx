@@ -33,7 +33,11 @@ export default function UpdateTodo({ todo }: Props) {
   };
 
   return (
-    <TodoBase transform={null} status={todo.status}>
+    <TodoBase
+      data-testid={"edit-todo-" + todo.id}
+      transform={null}
+      status={todo.status}
+    >
       <Form onSubmit={handleSubmit}>
         <Input
           name={todoDescId}

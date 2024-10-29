@@ -28,6 +28,7 @@ export default function CreateTodo({ status }: Props) {
   return (
     <Container>
       <button
+        data-testid={"create-button-" + status}
         onClick={() =>
           setTodo((todos) => [
             ...todos,

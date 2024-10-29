@@ -23,6 +23,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/react",
     "plugin:prettier/recommended",
     "plugin:@next/next/recommended",
   ],
@@ -58,5 +59,6 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": ["off"],
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "@next/next/no-img-element": "off",
+    "testing-library/no-node-access": "warn",
   },
 };

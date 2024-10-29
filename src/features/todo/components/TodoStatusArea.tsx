@@ -17,7 +17,7 @@ export default function TodoStatusArea({ children, status }: Props) {
   });
 
   return (
-    <Container ref={setNodeRef}>
+    <Container ref={setNodeRef} data-testid={status + "-section"}>
       <StatusWrapper>
         <Status status={status}>{status}</Status>
       </StatusWrapper>
