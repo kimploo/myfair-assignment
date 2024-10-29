@@ -1,8 +1,6 @@
 import TodoUserListPage from "../components/pages/TodoUserListPage";
 
-interface Props {}
-
-const Page = ({}: Props) => {
+const Page = () => {
   return <TodoUserListPage />;
 };
 

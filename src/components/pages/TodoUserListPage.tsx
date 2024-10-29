@@ -19,9 +19,7 @@ const Heading = styled.h1`
   padding: 1rem 0;
 `;
 
-interface Props {}
-
-const TodoUserListPage = ({}: Props) => {
+const TodoUserListPage = () => {
   return (
     <Container>
       <Heading>TODO App</Heading>

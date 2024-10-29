@@ -2,6 +2,8 @@
 # Documentation here: https://yarnpkg.com/features/zero-installs
 #/.pnp.*
 
+out
+
 .idea
 .next
 node_modules
