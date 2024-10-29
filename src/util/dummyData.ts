@@ -1,10 +1,10 @@
-import { nanoid } from "nanoid";
+import { v4 as uuid } from "uuid";
 
 import { Todo } from "../features/todo/types/todo.type";
 
 export const dummyTodos: Todo[] = [
   {
-    id: nanoid(),
+    id: uuid(),
     description: "프로젝트 회의를 위한 자료 준비",
     dueDate: "2024-11-01",
     status: "할 일",
@@ -12,7 +12,7 @@ export const dummyTodos: Todo[] = [
     canEdit: false,
   },
   {
-    id: nanoid(),
+    id: uuid(),
     description: "프로젝트 관련 서류를 부서에 제출",
     dueDate: "2024-11-03",
     status: "진행 중",
@@ -20,7 +20,7 @@ export const dummyTodos: Todo[] = [
     canEdit: false,
   },
   {
-    id: nanoid(),
+    id: uuid(),
     description: "팀원들의 코드를 검토하고 피드백 작성",
     dueDate: "2024-11-05",
     status: "할 일",
@@ -28,7 +28,7 @@ export const dummyTodos: Todo[] = [
     canEdit: false,
   },
   {
-    id: nanoid(),
+    id: uuid(),
     description: "주간 프로젝트 진행 상황 보고서 작성",
     dueDate: "2024-11-07",
     status: "할 일",
@@ -36,7 +36,7 @@ export const dummyTodos: Todo[] = [
     canEdit: false,
   },
   {
-    id: nanoid(),
+    id: uuid(),
     description: "새로운 프로젝트 개발 환경 구성",
     dueDate: "2024-11-08",
     status: "완료",

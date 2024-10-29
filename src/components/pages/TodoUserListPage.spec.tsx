@@ -1,7 +1,13 @@
-import "@testing-library/jest-dom";
+import { render } from "@testing-library/react";
 
-describe("테스트 샘플", () => {
-  it("sample", () => {
-    expect(1 + 1).toBe(2);
+import "@testing-library/jest-dom";
+import TodoUserListPage from "./TodoUserListPage";
+
+describe("TodoUserListPage 테스트", () => {
+  it("제목 렌더링", () => {
+    const page = render(<TodoUserListPage />);
+
+    const h1 = page.getByText("TODO App");
+    expect(h1).toBeVisible();
   });
 });

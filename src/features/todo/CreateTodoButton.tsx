@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { format } from "date-fns";
-import { nanoid } from "nanoid";
 import { useSetRecoilState } from "recoil";
+import { v4 as uuid } from "uuid";
 
 import { TodoBase } from "./asset/TodoBase";
 import { todoState } from "./state/todo.atom";
@@ -32,7 +32,7 @@ export default function CreateTodoButton({ status }: Props) {
           setTodo((todos) => [
             ...todos,
             {
-              id: nanoid(),
+              id: uuid(),
               createdAt: new Date().toISOString(),
               description: "",
               dueDate: format(new Date(), "yyyy-MM-dd"),
