@@ -4,7 +4,9 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { RecoilRoot, RecoilState } from "recoil";
 
 import LayoutTheme from "../../app/layout.theme";
@@ -262,7 +264,62 @@ describe("Todo 세부 요구사항 테스트", () => {
 
     // todo가 생성되지 않았는지 확인
     const todos = screen.getAllByTestId("todo-item-", { exact: false });
-    todos.forEach((todo) => console.log(prettyDOM(todo)));
     expect(todos.length).toBe(5);
+    // todos.forEach((todo) => console.log(prettyDOM(todo)));
+  });
+
+  it("'할 일' 혹은 '진행 중'인 Todo가 10개를 넘을 수 없습니다.", async () => {
+    render(
+      <LayoutTheme>
+        <RecoilRoot initializeState={initializeState}>
+          <TodoList></TodoList>
+        </RecoilRoot>
+      </LayoutTheme>,
+    );
+    const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+
+    // '할 일'인 Todo를 6개 생성
+    for (let i = 0; i < 6; i++) {
+      const createButton = screen.getByTestId("create-button-할 일");
+      fireEvent.click(createButton);
+
+      // 생성한 Todo Input 확인
+      const updateTodo = screen.getByTestId("update-todo-", { exact: false });
+      expect(updateTodo).toBeVisible();
+
+      const textInput = updateTodo.querySelector("input[type=text]")!;
+      const dateInput = updateTodo.querySelector("input[type=date]")!;
+      const submitButton = updateTodo.querySelector("button[type=submit]")!;
+
+      // Todo 변경 사항 입력
+      fireEvent.change(textInput, { target: { value: "테스트 TODO" } });
+      fireEvent.change(dateInput, { target: { value: "1970-01-01" } });
+      fireEvent.click(submitButton);
+    }
+
+    // 더미 데이터의 할 일 3개 + 새로 생성한 할 일 6개 = 총 9개
+    const inProgressSection = screen.getByTestId("할 일-section");
+    const inProgressTodos = within(inProgressSection).getAllByTestId(
+      "todo-item-",
+      { exact: false },
+    );
+    expect(inProgressTodos.length).toBe(9);
+
+    // 추가 생성 시도
+    const createButton = screen.getByTestId("create-button-할 일");
+    fireEvent.click(createButton);
+
+    // alert 호출
+    expect(alertMock).toHaveBeenCalledTimes(1);
+    alertMock.mockRestore();
+
+    // update ui는 나오지 않아야 함
+    const updateTodo = screen.queryByTestId("update-todo-", { exact: false });
+    expect(updateTodo).toBeFalsy();
+
+    // todo가 생성되지 않았는지 확인 (할 일 9, 진행 중 1, 완료 1 총 11개)
+    const todos = screen.getAllByTestId("todo-item-", { exact: false });
+    expect(todos.length).toBe(11);
+    // todos.forEach((todo) => console.log(prettyDOM(todo)));
   });
 });
