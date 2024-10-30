@@ -38,13 +38,16 @@ export default function NewTodo({ todo }: Props) {
   const newStatus: NewTodoStatus = todo.status === "완료" ? "할 일" : "완료";
 
   return (
-    <Container>
+    <Container data-testid={"todo-container-" + todo.id}>
       <TodoCheckbox
         checked={checked}
         fn={() => setStatus(todo.id, set, newStatus)}
       ></TodoCheckbox>
       <TodoValue status={todo.status}>{todo.description}</TodoValue>
-      <DeleteTodo fn={() => deleteTodo(todo.id, set)}></DeleteTodo>
+      <DeleteTodo
+        testId={"delete-todo-" + todo.id}
+        fn={() => deleteTodo(todo.id, set)}
+      ></DeleteTodo>
     </Container>
   );
 }

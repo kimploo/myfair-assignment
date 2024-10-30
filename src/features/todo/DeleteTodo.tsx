@@ -13,12 +13,13 @@ const Container = styled.button`
 `;
 
 interface Props {
+  testId?: string;
   fn: () => void;
 }
 
-export default function DeleteTodo({ fn }: Props) {
+export default function DeleteTodo({ testId, fn }: Props) {
   return (
-    <Container onClick={() => fn()}>
+    <Container data-testid={testId} onClick={() => fn()}>
       <Close></Close>
     </Container>
   );

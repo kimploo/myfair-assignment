@@ -18,7 +18,7 @@ export default function NewTodoList() {
   const nav = useRecoilValue(navState);
   const todos = rawTodos.filter((todo) => {
     if (nav === "All") return true;
-    if (nav === "To do") return todo.status === "할 일";
+    if (nav === "To Do") return todo.status === "할 일";
     if (nav === "Done") return todo.status === "완료";
   });
 

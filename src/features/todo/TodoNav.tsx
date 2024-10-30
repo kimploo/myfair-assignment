@@ -28,7 +28,7 @@ const NavButton = styled.button<{
 
 export default function TodoNav() {
   const [nav, setNav] = useRecoilState(navState);
-  const navList: NavStatus[] = ["All", "To do", "Done"];
+  const navList: NavStatus[] = ["All", "To Do", "Done"];
 
   return (
     <Container>

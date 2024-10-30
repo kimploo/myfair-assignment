@@ -1,12 +1,10 @@
 import {
   fireEvent,
-  prettyDOM,
   render,
   screen,
   waitFor,
   within,
 } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { RecoilRoot, RecoilState } from "recoil";
 
 import LayoutTheme from "../../app/layout.theme";

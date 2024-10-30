@@ -9,4 +9,4 @@ export interface NewTodo {
   canEdit: boolean;
 }
 
-export type NavStatus = "All" | "To do" | "Done";
+export type NavStatus = "All" | "To Do" | "Done";
