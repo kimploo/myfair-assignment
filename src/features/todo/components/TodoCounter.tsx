@@ -1,5 +1,3 @@
-/** */
-
 import styled from "@emotion/styled";
 
 const Container = styled.div`
@@ -8,6 +6,6 @@ const Container = styled.div`
   padding-left: 16px;
 `;
 
-export default function NewTodoCounter() {
-  return <Container>총 3개</Container>;
+export default function NewTodoCounter({ count }: { count: number }) {
+  return <Container>{`총 ${count}개`}</Container>;
 }

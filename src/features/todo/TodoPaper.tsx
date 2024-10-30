@@ -2,7 +2,6 @@
 
 import styled from "@emotion/styled";
 
-import NewTodoCounter from "./components/TodoCounter";
 import NewTodoList from "./TodoList";
 import TodoNav from "./TodoNav";
 
@@ -13,7 +12,7 @@ const Container = styled.div`
 
   width: 737px;
   min-height: 484px;
-  max-height: 70vh;
+  max-height: 50vh;
   padding: 32px;
   margin-top: 32px;
   border-radius: 24px;
@@ -25,6 +24,7 @@ const Container = styled.div`
 
 const TodoWrapper = styled.div`
   width: 100%;
+  height: calc(100% - 40px);
   padding-top: 32px;
 `;
 
@@ -33,7 +33,6 @@ export default function TodoPaper() {
     <Container>
       <TodoNav></TodoNav>
       <TodoWrapper>
-        <NewTodoCounter></NewTodoCounter>
         <NewTodoList></NewTodoList>
       </TodoWrapper>
     </Container>

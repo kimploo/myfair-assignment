@@ -8,3 +8,5 @@ export interface NewTodo {
   createdAt: string; // ISO 8601 형식
   canEdit: boolean;
 }
+
+export type NavStatus = "All" | "To do" | "Done";

@@ -1,5 +1,8 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+
+import { navState } from "./state/todo.atom";
+import { NavStatus } from "./types/todo.type";
 
 const Container = styled.nav``;
 
@@ -24,15 +27,16 @@ const NavButton = styled.button<{
 `;
 
 export default function TodoNav() {
-  const [selected, setSel] = useState("All");
+  const [nav, setNav] = useRecoilState(navState);
+  const navList: NavStatus[] = ["All", "To do", "Done"];
 
   return (
     <Container>
-      {["All", "To do", "Done"].map((navitem) => (
+      {navList.map((navitem) => (
         <NavButton
           key={navitem}
-          selected={selected === navitem}
-          onClick={() => setSel(navitem)}
+          selected={nav === navitem}
+          onClick={() => setNav(navitem)}
         >
           {navitem}
         </NavButton>

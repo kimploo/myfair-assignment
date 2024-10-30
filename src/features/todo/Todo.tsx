@@ -16,7 +16,7 @@ const Container = styled.li`
   gap: 1rem;
 `;
 
-const TodoValue = styled.div`
+const TodoValue = styled.div<{ status: NewTodoStatus }>`
   display: inline-flex;
   align-items: center;
 
@@ -24,6 +24,8 @@ const TodoValue = styled.div`
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
+
+  color: ${({ status }) => (status === "완료" ? "#868686" : "currentColor")};
 `;
 
 interface Props {
@@ -41,7 +43,7 @@ export default function NewTodo({ todo }: Props) {
         checked={checked}
         fn={() => setStatus(todo.id, set, newStatus)}
       ></TodoCheckbox>
-      <TodoValue>{todo.description}</TodoValue>
+      <TodoValue status={todo.status}>{todo.description}</TodoValue>
       <DeleteTodo fn={() => deleteTodo(todo.id, set)}></DeleteTodo>
     </Container>
   );
