@@ -1,7 +1,9 @@
 /** */
 
 import styled from "@emotion/styled";
+import { useRecoilValue } from "recoil";
 
+import { newTodoState } from "./state/todo.atom";
 import NewTodo from "./Todo";
 
 const Container = styled.ul`
@@ -10,11 +12,13 @@ const Container = styled.ul`
 `;
 
 export default function NewTodoList() {
+  const todos = useRecoilValue(newTodoState);
+
   return (
     <Container>
-      <NewTodo></NewTodo>
-      <NewTodo></NewTodo>
-      <NewTodo></NewTodo>
+      {todos.map((todo) => (
+        <NewTodo key={todo.id} todo={todo}></NewTodo>
+      ))}
     </Container>
   );
 }

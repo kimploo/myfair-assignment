@@ -3,15 +3,24 @@
 import styled from "@emotion/styled";
 
 import Check from "../assets/Check";
-import Close from "../assets/Close";
 
-const Container = styled.div`
+interface Props {
+  checked?: boolean;
+}
+
+const Container = styled.div<{ checked?: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(229, 229, 229, 1);
+  border: ${({ checked }) =>
+    checked ? "none" : "1px solid rgba(229, 229, 229, 1)"};
+  background-color: ${({ checked }) => (checked ? "#2182F3" : "transparent")};
   border-radius: 9999px;
 `;
 
-export default function TodoCheckbox() {
-  return <Container></Container>;
+export default function TodoCheckbox({ checked }: Props) {
+  return <Container checked={checked}>{checked ? <Check /> : null}</Container>;
 }
