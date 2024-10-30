@@ -15,5 +15,15 @@ declare module "@emotion/react" {
       inProgress: string;
       done: string;
     };
+    colorsNew: {
+      primary: string;
+      secondary: string;
+      accent: string;
+      background: string;
+      text: string;
+      todo: string;
+      inProgress: string;
+      done: string;
+    };
   }
 }

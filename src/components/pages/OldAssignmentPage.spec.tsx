@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { RecoilRoot, RecoilState } from "recoil";
 
 import LayoutTheme from "../../app/layout.theme";
-import { todoState } from "../../features/todo/state/todo.atom";
+import { todoState } from "../../features/old-todo/state/todo.atom";
 import { dummyTodos } from "../../util/dummyData";
 
-import TodoUserListPage from "./TodoUserListPage";
+import TodoUserListPage from "./OldAssignmentPage";
 
 const initializeState = ({
   set,

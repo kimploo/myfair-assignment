@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Todo } from "../features/todo/types/todo.type";
+import { Todo } from "../features/old-todo/types/todo.type";
 
 export const dummyTodos: Todo[] = [
   {

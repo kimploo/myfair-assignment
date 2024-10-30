@@ -16,6 +16,17 @@ const theme = {
     inProgress: "rgb(211, 229, 239)",
     done: "rgb(219, 237, 219)",
   },
+  colorsNew: {
+    primary: "",
+    secondary: "",
+    accent: "#2182F3",
+    background: "#F6F6F6",
+    paper: "#FFFFFF",
+    text: "",
+    todo: "",
+    inProgress: "",
+    done: "",
+  },
 };
 
 interface Props {

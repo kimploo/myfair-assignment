@@ -1,7 +1,7 @@
-import TodoUserListPage from "../components/pages/TodoUserListPage";
+import NewPage from "../components/newPage/NewPage";
 
 const Page = () => {
-  return <TodoUserListPage />;
+  return <NewPage></NewPage>;
 };
 
 export default Page;

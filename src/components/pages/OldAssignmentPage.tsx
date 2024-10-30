@@ -3,7 +3,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-import TodoList from "../../features/todo/TodoList";
+import TodoList from "../../features/old-todo/TodoList";
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const Heading = styled.h1`
   padding: 1rem 0;
 `;
 
-const TodoUserListPage = () => {
+const OldAssignmentPage = () => {
   return (
     <Container>
       <Heading>TODO App</Heading>
@@ -28,4 +28,4 @@ const TodoUserListPage = () => {
   );
 };
 
-export default TodoUserListPage;
+export default OldAssignmentPage;
