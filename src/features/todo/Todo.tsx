@@ -27,7 +27,7 @@ export default function Todo({ todo }: Props) {
       ref={setNodeRef}
       transform={transform}
       status={todo.status}
-      data-testid={"todo-" + todo.id}
+      data-testid={"todo-item-" + todo.id}
       {...listeners}
       {...attributes}
     >

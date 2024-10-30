@@ -1,12 +1,10 @@
 import {
   fireEvent,
-  prettyDOM,
+  // prettyDOM,
   render,
   screen,
   waitFor,
-  waitForElementToBeRemoved,
 } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { RecoilRoot, RecoilState } from "recoil";
 
 import LayoutTheme from "../../app/layout.theme";
@@ -86,8 +84,8 @@ describe.skip("TodoList Dnd 테스트", () => {
     );
 
     // 드래그하여 진행 중 상태로 드래그 앤 드롭
-    const todo1 = screen.getByTestId("todo-" + dummyTodos[0].id);
-    const todo2 = screen.getByTestId("todo-" + dummyTodos[1].id);
+    const todo1 = screen.getByTestId("todo-item-" + dummyTodos[0].id);
+    const todo2 = screen.getByTestId("todo-item-" + dummyTodos[1].id);
     const inProgressSection = screen.getByTestId("진행 중-section");
     expect(todo1).toBeVisible();
     expect(inProgressSection).toBeVisible();
@@ -102,7 +100,7 @@ describe.skip("TodoList Dnd 테스트", () => {
 
     // 진행 중 상태인지 확인
     await waitFor(() => {
-      console.log(prettyDOM(inProgressSection));
+      // console.log(prettyDOM(inProgressSection));
       expect(inProgressSection).toContainElement(newTodo1);
     });
   });
@@ -133,9 +131,11 @@ describe("Todo 기능 테스트", () => {
       </LayoutTheme>,
     );
 
+    // 생성 버튼 클릭
     const createButton = screen.getByTestId("create-button-할 일");
     fireEvent.click(createButton);
 
+    // 생성한 Todo Input 확인
     const updateTodo = screen.getByTestId("update-todo-", { exact: false });
     expect(updateTodo).toBeVisible();
 
@@ -143,6 +143,7 @@ describe("Todo 기능 테스트", () => {
     const dateInput = updateTodo.querySelector("input[type=date]")!;
     const submitButton = updateTodo.querySelector("button[type=submit]")!;
 
+    // Todo 변경 사항 입력
     fireEvent.change(textInput, { target: { value: "테스트 TODO" } });
     fireEvent.change(dateInput, { target: { value: "1970-01-01" } });
     fireEvent.click(submitButton);
@@ -152,8 +153,10 @@ describe("Todo 기능 테스트", () => {
     expect(newTodoText).toBeVisible();
     expect(newTodoDate).toBeVisible();
 
-    const todoArea = screen.getByTestId("할 일-section");
-    console.log(prettyDOM(todoArea));
+    // todo 실제로 생성되었는지 확인
+    const todos = screen.getAllByTestId("todo-item-", { exact: false });
+    // todos.forEach((todo) => console.log(prettyDOM(todo)));
+    expect(todos.length).toBe(6);
   });
 
   it("Todo 수정 테스트", async () => {
@@ -169,18 +172,30 @@ describe("Todo 기능 테스트", () => {
     const todo0Update = screen.getByTestId("update-button-" + dummyTodos[0].id);
     fireEvent.click(todo0Update);
 
-    // 수정 버튼을 누르면 일반 Todo 엘리먼트는 사라진다.
-    expect(screen.queryByText(dummyTodos[0].description)).toBeFalsy();
+    // 생성한 Todo Input 확인
+    const updateTodo = screen.getByTestId("update-todo-" + dummyTodos[0].id, {
+      exact: false,
+    });
+    expect(updateTodo).toBeVisible();
 
-    // 사라진 것 확인
-    // const inProgressSection = screen.getByTestId("할 일-section");
-    // console.log(prettyDOM(inProgressSection));
+    const textInput = updateTodo.querySelector("input[type=text]")!;
+    const dateInput = updateTodo.querySelector("input[type=date]")!;
+    const submitButton = updateTodo.querySelector("button[type=submit]")!;
 
-    // 새로 생긴 Todo input을 찾고
+    // Todo 변경 사항 입력
+    fireEvent.change(textInput, { target: { value: "테스트 TODO" } });
+    fireEvent.change(dateInput, { target: { value: "1970-01-01" } });
+    fireEvent.click(submitButton);
 
-    // 내용 수정하고 submit
+    const newTodoText = screen.getByText("테스트 TODO");
+    const newTodoDate = screen.getByText("1970-01-01");
+    expect(newTodoText).toBeVisible();
+    expect(newTodoDate).toBeVisible();
 
-    // 새로 생긴 todo 확인
+    // todo 실제로 생성되었는지 확인
+    const todos = screen.getAllByTestId("todo-item-", { exact: false });
+    // todos.forEach((todo) => console.log(prettyDOM(todo)));
+    expect(todos.length).toBe(5);
   });
 
   it("Todo 삭제 테스트", async () => {
@@ -198,8 +213,11 @@ describe("Todo 기능 테스트", () => {
 
     expect(screen.queryByText(dummyTodos[0].description)).toBeFalsy();
     const inProgressSection = screen.getByTestId("할 일-section");
-    // console.log(prettyDOM(inProgressSection));
-
     expect(inProgressSection).not.toContainElement(todo0Delete);
+
+    // todo 실제로 삭제되었는지 확인
+    const todos = screen.getAllByTestId("todo-item-", { exact: false });
+    // todos.forEach((todo) => console.log(prettyDOM(todo)));
+    expect(todos.length).toBe(4);
   });
 });

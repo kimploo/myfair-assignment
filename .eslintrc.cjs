@@ -55,10 +55,8 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/explicit-function-return-type": ["off"],
     "@typescript-eslint/explicit-module-boundary-types": ["off"],
-    "@typescript-eslint/no-empty-function": ["off"],
-    "@typescript-eslint/no-explicit-any": ["off"],
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
     "@next/next/no-img-element": "off",
-    "testing-library/no-node-access": "warn",
+    "testing-library/no-node-access": "off",
   },
 };
