@@ -15,7 +15,7 @@ const dummyTodo: Todo = {
   canEdit: true,
 };
 
-describe("UpdateTodo 렌더링 테스트", () => {
+describe.skip("V1: UpdateTodo 렌더링 테스트", () => {
   it("Todo 설명 표시", () => {
     render(
       <LayoutTheme>

@@ -20,7 +20,7 @@ const initializeState = ({
   set<Todo[]>(todoState, dummyTodos);
 };
 
-describe("TodoStatusArea 유닛 테스트", () => {
+describe.skip("V1: TodoStatusArea 유닛 테스트", () => {
   it("TodoStatusArea 렌더링 테스트", () => {
     render(
       <LayoutTheme>

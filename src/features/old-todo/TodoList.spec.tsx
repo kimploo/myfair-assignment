@@ -24,7 +24,7 @@ const initializeState = ({
   set<Todo[]>(todoState, dummyTodos);
 };
 
-describe("TodoList 유닛 테스트", () => {
+describe.skip("V1: TodoList 유닛 테스트", () => {
   it("Todo 상태 영역 렌더링 테스트", () => {
     render(
       <LayoutTheme>
@@ -66,7 +66,7 @@ describe("TodoList 유닛 테스트", () => {
 
 // DnD로 작동하는 테스트는 jsdom으로 불가능, 가능하다고 해도 불안정할 듯 .. playwright 도입 필요
 // REF: https://github.com/clauderic/dnd-kit/issues/261#issuecomment-844651307
-describe.skip("TodoList Dnd 테스트", () => {
+describe.skip("V1: TodoList Dnd 테스트", () => {
   beforeEach(() => {
     // Define a default screen size before each test
     window.innerWidth = 1440;
@@ -108,7 +108,7 @@ describe.skip("TodoList Dnd 테스트", () => {
   });
 });
 
-describe("Todo 기능 테스트", () => {
+describe.skip("V1: Todo 기능 테스트", () => {
   it("Todo 생성 테스트", async () => {
     render(
       <LayoutTheme>
@@ -224,7 +224,7 @@ describe("Todo 기능 테스트", () => {
   });
 });
 
-describe("Todo 세부 요구사항 테스트", () => {
+describe.skip("V1: Todo 세부 요구사항 테스트", () => {
   it("'할 일'은 20글자를 넘길 수 없습니다.", async () => {
     render(
       <LayoutTheme>

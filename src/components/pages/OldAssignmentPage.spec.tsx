@@ -15,7 +15,7 @@ const initializeState = ({
   set(todoState, dummyTodos);
 };
 
-describe("TodoUserListPage 테스트", () => {
+describe.skip("V1: TodoUserListPage 테스트", () => {
   it("제목 렌더링", () => {
     render(
       <LayoutTheme>

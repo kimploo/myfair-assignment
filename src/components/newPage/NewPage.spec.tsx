@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { RecoilRoot, RecoilState } from "recoil";
 
 import LayoutTheme from "../../app/layout.theme";
-import { todoState } from "../../features/old-todo/state/todo.atom";
-import { dummyTodos } from "../../util/dummyData";
+import { newTodoState } from "../../features/todo/state/todo.atom";
+import { newDummy } from "../../util/newDummy";
 
 import NewPage from "./NewPage";
 
@@ -12,10 +12,10 @@ const initializeState = ({
 }: {
   set: <T>(recoilState: RecoilState<T>, value: T) => void;
 }) => {
-  set(todoState, dummyTodos);
+  set(newTodoState, newDummy);
 };
 
-describe("TodoUserListPage 테스트", () => {
+describe("V2: New Page 테스트", () => {
   it("제목 렌더링", () => {
     render(
       <LayoutTheme>
