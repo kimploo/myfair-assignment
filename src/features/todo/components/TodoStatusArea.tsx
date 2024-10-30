@@ -8,7 +8,7 @@ import { TodoStatus } from "../types/todo.type";
 
 interface Props {
   status: TodoStatus;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export default function TodoStatusArea({ children, status }: Props) {
