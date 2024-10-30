@@ -3,7 +3,6 @@ import { RecoilRoot } from "recoil";
 
 import LayoutTheme from "../../../app/layout.theme";
 
-import TodoCheckbox from "./TodoCheckbox";
 import NewTodoCounter from "./TodoCounter";
 
 describe("V2: TodoCounter 렌더링 테스트", () => {
