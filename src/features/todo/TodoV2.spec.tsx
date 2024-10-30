@@ -176,7 +176,7 @@ describe("V2: TodoNav 기능 테스트", () => {
   });
 });
 
-describe("V1: Todo 세부 요구사항 테스트", () => {
+describe("V2: Todo 세부 요구사항 테스트", () => {
   it("'할 일'은 20글자를 넘길 수 없습니다.", async () => {
     render(
       <LayoutTheme>
