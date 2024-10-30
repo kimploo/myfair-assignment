@@ -1,6 +1,6 @@
 import {
   fireEvent,
-  // prettyDOM,
+  prettyDOM,
   render,
   screen,
   waitFor,
@@ -219,5 +219,50 @@ describe("Todo 기능 테스트", () => {
     const todos = screen.getAllByTestId("todo-item-", { exact: false });
     // todos.forEach((todo) => console.log(prettyDOM(todo)));
     expect(todos.length).toBe(4);
+  });
+});
+
+describe("Todo 세부 요구사항 테스트", () => {
+  it("'할 일'은 20글자를 넘길 수 없습니다.", async () => {
+    render(
+      <LayoutTheme>
+        <RecoilRoot initializeState={initializeState}>
+          <TodoList></TodoList>
+        </RecoilRoot>
+      </LayoutTheme>,
+    );
+    const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
+
+    // 생성 버튼 클릭
+    const createButton = screen.getByTestId("create-button-할 일");
+    fireEvent.click(createButton);
+
+    // 생성한 Todo Input 확인
+    const updateTodo = screen.getByTestId("update-todo-", { exact: false });
+    expect(updateTodo).toBeVisible();
+
+    const textInput = updateTodo.querySelector("input[type=text]")!;
+
+    // Todo 변경 사항 입력
+    fireEvent.change(textInput, {
+      target: {
+        value:
+          "'할 일'은 20글자를 넘길 수 없습니다. '할 일'은 20글자를 넘길 수 없습니다.",
+      },
+    });
+
+    // Todo 글자가 20개가 넘으면 alert
+    expect(alertMock).toHaveBeenCalledTimes(1);
+    alertMock.mockRestore();
+
+    const newTodoText = screen.queryByText(
+      "'할 일'은 20글자를 넘길 수 없습니다. '할 일'은 20글자를 넘길 수 없습니다.",
+    );
+    expect(newTodoText).toBeFalsy();
+
+    // todo가 생성되지 않았는지 확인
+    const todos = screen.getAllByTestId("todo-item-", { exact: false });
+    todos.forEach((todo) => console.log(prettyDOM(todo)));
+    expect(todos.length).toBe(5);
   });
 });

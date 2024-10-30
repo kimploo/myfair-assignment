@@ -44,7 +44,14 @@ export default function UpdateTodo({ todo }: Props) {
           name={todoDescId}
           type="text"
           value={desc}
-          onChange={(e) => setDesc(e.target.value)}
+          maxLength={20}
+          onChange={(e) => {
+            if (e.target.value.length <= 20) {
+              setDesc(e.target.value);
+            } else {
+              alert("'할 일'은 20글자를 넘길 수 없습니다.");
+            }
+          }}
         />
         <Input
           id={todoDateId}
