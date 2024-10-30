@@ -280,6 +280,14 @@ export default function LayoutTheme({ children }: Props) {
             text-align: center; /* Centers text */
             cursor: pointer; /* Sets the pointer on hover */
           }
+
+          /* Hide the default checkbox */
+          input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            cursor: pointer;
+          }
         `}
       />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
+import { useSetRecoilState } from "recoil";
 
 import TodoCheckbox from "./components/TodoCheckbox";
-import TodoX from "./components/TodoX";
-import { NewTodo as INewTodo } from "./types/todo.type";
+import DeleteTodo from "./DeleteTodo";
+import { newTodoState } from "./state/todo.atom";
+import { deleteTodo, setStatus } from "./state/todo.function";
+import { NewTodo as INewTodo, NewTodoStatus } from "./types/todo.type";
 
 const Container = styled.li`
   display: flex;
@@ -28,11 +31,18 @@ interface Props {
 }
 
 export default function NewTodo({ todo }: Props) {
+  const set = useSetRecoilState(newTodoState);
+  const checked = todo.status === "완료";
+  const newStatus: NewTodoStatus = todo.status === "완료" ? "할 일" : "완료";
+
   return (
     <Container>
-      <TodoCheckbox checked={todo.status === "완료"}></TodoCheckbox>
+      <TodoCheckbox
+        checked={checked}
+        fn={() => setStatus(todo.id, set, newStatus)}
+      ></TodoCheckbox>
       <TodoValue>{todo.description}</TodoValue>
-      <TodoX></TodoX>
+      <DeleteTodo fn={() => deleteTodo(todo.id, set)}></DeleteTodo>
     </Container>
   );
 }
