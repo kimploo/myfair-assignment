@@ -37,7 +37,7 @@ export default function Todo({ todo }: Props) {
       </MainWrapper>
       <ButtonWrapper onPointerDown={(e) => e.stopPropagation()}>
         <button
-          data-testid={"edit-button-" + todo.id}
+          data-testid={"update-button-" + todo.id}
           onClick={() => setCanEdit(todo.id, setTodos, true)}
         >
           <Edit />

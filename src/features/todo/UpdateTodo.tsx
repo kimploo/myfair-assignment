@@ -16,8 +16,8 @@ export default function UpdateTodo({ todo }: Props) {
   const [dueDate, setDueDate] = useState(todo.dueDate);
   const setTodos = useSetRecoilState(todoState);
 
-  const todoDescId = "todo-description-" + todo.id;
-  const todoDateId = "todo-date-" + todo.id;
+  const todoDescId = "update-todo-description-" + todo.id;
+  const todoDateId = "update-todo-date-" + todo.id;
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -34,17 +34,20 @@ export default function UpdateTodo({ todo }: Props) {
 
   return (
     <TodoBase
-      data-testid={"edit-todo-" + todo.id}
+      data-testid={"update-todo-" + todo.id}
       transform={null}
       status={todo.status}
     >
       <Form onSubmit={handleSubmit}>
         <Input
+          id={todoDescId}
           name={todoDescId}
+          type="text"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
         <Input
+          id={todoDateId}
           name={todoDateId}
           type="date"
           value={dueDate}

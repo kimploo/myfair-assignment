@@ -121,7 +121,7 @@ describe("Todo 기능 테스트", () => {
     const todoArea = screen.getByTestId("create-button-할 일");
     fireEvent.click(todoArea);
 
-    expect(screen.getByTestId("edit-todo-", { exact: false })).toBeVisible();
+    expect(screen.getByTestId("update-todo-", { exact: false })).toBeVisible();
   });
 
   it("Todo 생성 후 수정 테스트", async () => {
@@ -133,10 +133,27 @@ describe("Todo 기능 테스트", () => {
       </LayoutTheme>,
     );
 
-    const todoArea = screen.getByTestId("create-button-할 일");
-    fireEvent.click(todoArea);
+    const createButton = screen.getByTestId("create-button-할 일");
+    fireEvent.click(createButton);
 
-    expect(screen.getByTestId("edit-todo-", { exact: false })).toBeVisible();
+    const updateTodo = screen.getByTestId("update-todo-", { exact: false });
+    expect(updateTodo).toBeVisible();
+
+    const textInput = updateTodo.querySelector("input[type=text]")!;
+    const dateInput = updateTodo.querySelector("input[type=date]")!;
+    const submitButton = updateTodo.querySelector("button[type=submit]")!;
+
+    fireEvent.change(textInput, { target: { value: "테스트 TODO" } });
+    fireEvent.change(dateInput, { target: { value: "1970-01-01" } });
+    fireEvent.click(submitButton);
+
+    const newTodoText = screen.getByText("테스트 TODO");
+    const newTodoDate = screen.getByText("1970-01-01");
+    expect(newTodoText).toBeVisible();
+    expect(newTodoDate).toBeVisible();
+
+    const todoArea = screen.getByTestId("할 일-section");
+    console.log(prettyDOM(todoArea));
   });
 
   it("Todo 수정 테스트", async () => {
@@ -149,8 +166,8 @@ describe("Todo 기능 테스트", () => {
     );
 
     // 수정 버튼 클릭
-    const todo0Edit = screen.getByTestId("edit-button-" + dummyTodos[0].id);
-    fireEvent.click(todo0Edit);
+    const todo0Update = screen.getByTestId("update-button-" + dummyTodos[0].id);
+    fireEvent.click(todo0Update);
 
     // 수정 버튼을 누르면 일반 Todo 엘리먼트는 사라진다.
     expect(screen.queryByText(dummyTodos[0].description)).toBeFalsy();
