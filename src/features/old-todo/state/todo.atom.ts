@@ -4,6 +4,6 @@ import { dummyTodos } from "../../../util/dummyData";
 import { Todo } from "../types/todo.type";
 
 export const todoState = atom<Todo[]>({
-  key: "todoState",
+  key: "oldTodoState",
   default: dummyTodos || [],
 });

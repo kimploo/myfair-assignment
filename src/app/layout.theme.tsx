@@ -22,6 +22,7 @@ const theme = {
     accent: "#2182F3",
     background: "#F6F6F6",
     paper: "#FFFFFF",
+    navText: "rgba(69, 69, 69, 1)",
     text: "",
     todo: "",
     inProgress: "",
@@ -72,6 +73,8 @@ export default function LayoutTheme({ children }: Props) {
             line-height: 1.15; /* 1. Correct the line height in all browsers. */
             -webkit-text-size-adjust: 100%; /* 2. Prevent adjustments of font size after orientation changes in iOS. */
             tab-size: 4; /* 3. Use a more readable tab size (opinionated). */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }
 
           /*

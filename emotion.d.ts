@@ -20,7 +20,9 @@ declare module "@emotion/react" {
       secondary: string;
       accent: string;
       background: string;
+      navText: string;
       text: string;
+      paper: string;
       todo: string;
       inProgress: string;
       done: string;
