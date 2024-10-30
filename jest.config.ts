@@ -7,6 +7,10 @@ const createJestConfig = nextJest({
 
 const customJestConfig: Config = {
   verbose: true,
+  testPathIgnorePatterns: [
+    "<rootDir>/src/util/test-for-test/",
+    // Add other directories to ignore if needed
+  ],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testEnvironment: "jest-environment-jsdom",
 };
